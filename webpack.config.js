@@ -1,4 +1,5 @@
 const path = require('path') //path esta disponible en node, no hay que instalar
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 
@@ -26,6 +27,13 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+   new HtmlWebpackPlugin({
+     inject: true,
+     template: "./public/index.html",
+     filename: "index.html" //resultado de salida
+   })
+  ]
 
 }
