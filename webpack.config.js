@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const DotEnv = require('dotenv-webpack');
 
 module.exports = {
 
@@ -58,7 +59,7 @@ module.exports = {
             mimetype: 'application/font-woff',
             name: "[name].[contenthash].[ext]",
             outputPath: "./assets/fonts",
-            publicPath: "./assets/fonts",
+            publicPath: "../assets/fonts",
             esModule: false
           }
         }
@@ -81,7 +82,8 @@ module.exports = {
           to: "assets/images"
         }
       ]
-    })
+    }),
+    new DotEnv()
   ],
   optimization: {
     minimize: true,
