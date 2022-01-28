@@ -2,10 +2,7 @@ const path = require('path'); //path esta disponible en node, no hay que instala
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const DotEnv = require('dotenv-webpack');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
 
@@ -16,6 +13,7 @@ module.exports = {
     filename: "[name].[contenthash].js", //Js resultante,
     assetModuleFilename: "assets/images/[hash][ext][query]"
   },
+  mode: "development",
   resolve: {
     extensions: ['.js'],
     alias: {
@@ -83,15 +81,7 @@ module.exports = {
         }
       ]
     }),
-    new DotEnv(),
-    new CleanWebpackPlugin(),
+    new DotEnv()
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserPlugin(),
-    ]
-  }
 
 }
