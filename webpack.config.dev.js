@@ -67,10 +67,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        inject: true,
-        template: "./public/index.html",
-        filename: "index.html" //resultado de salida
-      }),
+      inject: true,
+      template: "./public/index.html",
+      filename: "index.html" //resultado de salida
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/[name].[contenthash].css'
     }),
@@ -84,5 +84,19 @@ module.exports = {
     }),
     new DotEnv()
   ],
+  // devServer: {
+  //   codeBase: path.join(__dirname, 'dist'),
+  //   compress: true,
+  //   historyApiFallback: true,
+  //   por: 3030
+  // }
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    historyApiFallback: true,
+    port: 3006,
+  },
 
 }
